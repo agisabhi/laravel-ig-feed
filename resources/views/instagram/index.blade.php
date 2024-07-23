@@ -5,54 +5,34 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+
 </head>
 <body>
-    <div class="container">
-  <div class="row align-items-start">
-    <div class="col">
-      One of three columns
-    </div>
-    <div class="col">
-      One of three columns
-    </div>
-    <div class="col">
-      One of three columns
-    </div>
-  
-  <div class="col">
-      One of three columns
-    </div>
-  <div class="col">
-      One of three columns
-    </div>
-  <div class="col">
-      One of three columns
-    </div>
-  </div>
-    </div>
 
     <div class="container">
-        <h1>Instagram Feed Agis</h1>
+        <h1 align="center">NEWS</h1>
         <div class="row">
 
         {{-- @php
             dd($media['data']);
         @endphp --}}
         @foreach ($media['data'] as $m)
+        <div class="col-4 mb-4">
             @if ($m['media_type'] == 'IMAGE' || $m['media_type'] == 'CAROUSEL_ALBUM')
-                <div class="col-6">
-                    <img src="{{ $m['media_url'] }}" alt="" style="max-width: 50%; ">
-                </div>
+                    <img src="{{ $m['media_url'] }}" alt="" style="max-width: 100%; ">
+                <br>
+                    <a href="{{ $m['permalink'] }}" target="_blank">View on Instagram</a>
             @elseif ($m['media_type'] == 'VIDEO')
-                <div class="col-6">
-                    <video controls style="max-width: 50%;">
-                        <source src="{{ $m['media_url'] }}" type="video/mp4">
-                    </video>
-                </div>
-            @endif
             
-            <a href="{{ $m['permalink'] }}" target="_blank">View on Instagram</a>
+                <video controls style="max-width: 100%;">
+                    <source src="{{ $m['media_url'] }}" type="video/mp4">
+                </video>
+                
+                    <br>
+                    <a href="{{ $m['permalink'] }}" target="_blank">View on Instagram</a>
+            @endif
+        </div>
         @endforeach
         </div>
     </div>
