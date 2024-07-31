@@ -14,25 +14,22 @@
         <h1 align="center">NEWS</h1>
         <div class="row">
 
-        {{-- @php
-            dd($media['data']);
-        @endphp --}}
         @foreach ($media['data'] as $m)
-        <div class="col-4 mb-4">
-            @if ($m['media_type'] == 'IMAGE' || $m['media_type'] == 'CAROUSEL_ALBUM')
-                    <img src="{{ $m['media_url'] }}" alt="" style="max-width: 100%; ">
-                <br>
-                    <a href="{{ $m['permalink'] }}" target="_blank">View on Instagram</a>
-            @elseif ($m['media_type'] == 'VIDEO')
-            
-                <video controls style="max-width: 100%;">
-                    <source src="{{ $m['media_url'] }}" type="video/mp4">
-                </video>
-                
+            <div class="col-4 mb-4">
+                @if ($m['media_type'] == 'IMAGE' || $m['media_type'] == 'CAROUSEL_ALBUM')
+                        <img src="{{ $m['media_url'] }}" alt="" style="max-width: 100%; ">
                     <br>
-                    <a href="{{ $m['permalink'] }}" target="_blank">View on Instagram</a>
-            @endif
-        </div>
+                        <a href="{{ $m['permalink'] }}" target="_blank">View on Instagram</a>
+                @elseif ($m['media_type'] == 'VIDEO')
+                
+                    <video controls style="max-width: 100%;">
+                        <source src="{{ $m['media_url'] }}" type="video/mp4">
+                    </video>
+                    
+                        <br>
+                        <a href="{{ $m['permalink'] }}" target="_blank">View on Instagram</a>
+                @endif
+            </div>
         @endforeach
         </div>
     </div>
